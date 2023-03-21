@@ -4,7 +4,9 @@ import CoreComponents from './src/CoreComponents';
 
 //Function Component
 const App = () => {
-  return <CoreComponents />;
+  return (
+    <CoreComponents title="Hello World!!!" subTitle="Welcome to Mobile Class" />
+  );
 };
 
 //Export
