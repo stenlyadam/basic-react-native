@@ -2,29 +2,21 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
 const SignIn = () => {
-  //   let welcome = 'Welcome';
   useEffect(() => {
-    console.log('component did mount');
+    console.log('Component did mount');
   }, []);
 
-  useEffect(() => {
-    console.log('component did update');
-  }, [welcome]);
-
-  const [welcome, setWelcome] = useState('Welcome');
-  const [users, setUsers] = useState([]);
+  const [welcome, setWelcome] = useState('Welcome!!!');
 
   const handleSubmit = () => {
-    // welcome = 'Selamat Datang';
     setWelcome('Selamat Datang');
-    // setUsers(['John']);
+    console.log(welcome);
   };
-  console.log(users[0]);
 
+  console.log('component rendered');
   return (
     <View>
-      <Text style={styles.title}>{welcome}</Text>
-      <Text style={styles.title}>{users[0]}</Text>
+      <Text style={styles.welcome}>{welcome}</Text>
       <Button title="SignIn" color="#841584" onPress={handleSubmit} />
     </View>
   );
@@ -33,10 +25,11 @@ const SignIn = () => {
 export default SignIn;
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    fontWeight: '700',
-    margin: 10,
+  welcome: {
+    fontSize: 24,
+    color: 'black',
+    fontWeight: 'bold',
     textAlign: 'center',
+    margin: 10,
   },
 });
