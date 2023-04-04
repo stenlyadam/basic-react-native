@@ -1,23 +1,42 @@
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState, useEffect} from 'react';
+import TextInput from '../../components/molecules/TextInput';
+import Button from '../../components/atoms/Button';
+import Gap from '../../components/atoms/Gap';
 
 const SignIn = () => {
-  useEffect(() => {
-    console.log('Component did mount');
-  }, []);
+  const [userName, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [welcome, setWelcome] = useState('Welcome!!!');
+  const handleSignIn = () => {
+    const data = {
+      userName: userName,
+      password: password,
+    };
 
-  const handleSubmit = () => {
-    setWelcome('Selamat Datang');
-    console.log(welcome);
+    console.log(data);
   };
 
-  console.log('component rendered');
   return (
-    <View>
-      <Text style={styles.welcome}>{welcome}</Text>
-      <Button title="SignIn" color="#841584" onPress={handleSubmit} />
+    <View style={styles.container}>
+      <Text style={styles.welcome}>Welcome</Text>
+      <Gap height={30} />
+      <TextInput
+        label="Username"
+        placeHolder="Masukan username anda"
+        value={userName}
+        onChangeText={e => setUsername(e)}
+      />
+      <Gap height={20} />
+      <TextInput
+        label="Password"
+        placeHolder="Masukan password anda"
+        value={password}
+        secureTextEntry={true}
+        onChangeText={e => setPassword(e)}
+      />
+      <Gap height={25} />
+      <Button label="Sign In" onPress={handleSignIn} />
     </View>
   );
 };
@@ -25,11 +44,12 @@ const SignIn = () => {
 export default SignIn;
 
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 20,
+    marginTop: 10,
+  },
   welcome: {
-    fontSize: 24,
+    fontSize: 30,
     color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    margin: 10,
   },
 });
